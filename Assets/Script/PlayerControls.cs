@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public GameObject whatever;
+    public Camera camera;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -27,6 +29,8 @@ public class PlayerControls : MonoBehaviour
 
     void FixedUpdate()
     {
+        Vector2 cameraPos = rb.position + moveVelocity * Time.fixedDeltaTime;
+        camera.transform.position = new Vector3(cameraPos.x, cameraPos.y - 5f, camera.transform.position.z);
         rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
     }
 
