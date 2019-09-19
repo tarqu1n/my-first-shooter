@@ -130,11 +130,11 @@ GameObject:
   m_Component:
   - component: {fileID: 50805142}
   - component: {fileID: 50805144}
-  - component: {fileID: 50805143}
   - component: {fileID: 50805145}
   - component: {fileID: 50805146}
   - component: {fileID: 50805148}
   - component: {fileID: 50805147}
+  - component: {fileID: 50805143}
   m_Layer: 8
   m_Name: Spider
   m_TagString: Monster
@@ -150,8 +150,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 50805141}
   m_LocalRotation: {x: -0.17364825, y: -0, z: -0, w: 0.9848078}
-  m_LocalPosition: {x: 2.4003553, y: -1.640858, z: 3.234786}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.87, y: -0.2, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1148089954}
   m_Father: {fileID: 1578770871}
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 50805141}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78a81276b790bc2499b208bfe64b0e26, type: 3}
+  m_Script: {fileID: 11500000, guid: 91a325a194e0f3c42a997062d2791b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!210 &50805144
@@ -248,8 +248,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c277e876518664ab76dbfd8f12166d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 4
   startHealth: 20
   health: 0
+  attackRange: 1
+  startBehaviour: 1
+  currentBehaviour: 0
+  deathEffect: {fileID: 0}
 --- !u!60 &50805148
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -943,9 +948,9 @@ GameObject:
   - component: {fileID: 600799287}
   - component: {fileID: 600799284}
   - component: {fileID: 600799288}
-  - component: {fileID: 600799286}
   - component: {fileID: 600799285}
   - component: {fileID: 600799289}
+  - component: {fileID: 600799286}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1033,7 +1038,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 600799281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78a81276b790bc2499b208bfe64b0e26, type: 3}
+  m_Script: {fileID: 11500000, guid: 91a325a194e0f3c42a997062d2791b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!210 &600799287
@@ -1076,7 +1081,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPos: {fileID: 1505325166}
-  attackRange: 1.51
   validTargets:
     serializedVersion: 2
     m_Bits: 256
@@ -2003,7 +2007,7 @@ Transform:
   m_GameObject: {fileID: 1505325165}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.193, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1198647261}
   m_RootOrder: 1
@@ -2100,7 +2104,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  attackSpeed: 0.5
   wielder: {fileID: 600799281}
+  hitEffect: {fileID: 4808635413028121728, guid: d525c3b3c3c9bce48a41bcb5e4831060,
+    type: 3}
 --- !u!1 &1578770870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2125,7 +2132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578770870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.50035536, y: -0.12914194, z: -2.5947862}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 50805142}

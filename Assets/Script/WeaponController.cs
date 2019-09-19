@@ -6,6 +6,7 @@ public class WeaponController : MonoBehaviour
 {
 
     public int damage;
+    public float attackSpeed;
     public GameObject wielder;
     public GameObject hitEffect;
 
@@ -13,6 +14,9 @@ public class WeaponController : MonoBehaviour
     void Start()
     {
         attackController = wielder.GetComponent<AttackController>();
+
+        // todo move this to attack controller and access weapon from there
+        wielder.GetComponent<Animator>().SetFloat("AttackSpeedMultiplier", 1 / attackSpeed);
     }
 
     // Update is called once per frame

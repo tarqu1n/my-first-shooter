@@ -18,6 +18,7 @@ public class MonsterController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
     private GameObject target;
+    
 
     private bool flippedDirection;
 
