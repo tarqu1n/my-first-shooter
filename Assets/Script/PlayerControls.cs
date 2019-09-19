@@ -2,17 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class PlayerControls : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public GameObject whatever;
     public Camera camera;
 
     private Rigidbody2D rb;
     private Animator animator;
-    private SortingGroup sortingGroup;
 
     private Vector2 moveVelocity;
     private bool flippedDirection;
@@ -20,8 +17,6 @@ public class PlayerControls : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        sortingGroup = GetComponent<SortingGroup>();
-
     }
     void Update()
     {
@@ -33,12 +28,12 @@ public class PlayerControls : MonoBehaviour
 
     void FixedUpdate()
     {
+        // move camera with player
         Vector2 cameraPos = rb.position + moveVelocity * Time.fixedDeltaTime;
         camera.transform.position = new Vector3(cameraPos.x, cameraPos.y - 5f, camera.transform.position.z);
-        rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
 
-        // set the layer based on y;
-        sortingGroup.sortingOrder = (int)(transform.position.y * -100);
+        // move player
+        rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
     }
 
     void SetDirection()
