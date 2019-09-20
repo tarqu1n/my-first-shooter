@@ -29,7 +29,6 @@ public class MonsterController : MonoBehaviour
         currentBehaviour = startBehaviour;
     }
 
-    // Update is called once per frame
     void Update()
     {
         SetDirection();
@@ -95,7 +94,6 @@ public class MonsterController : MonoBehaviour
 
     void SetDirection()
     {
-        Debug.Log(moveVelocity.x.ToString());
         if (moveVelocity.x > 0 && !flippedDirection)
         {
             transform.localScale = new Vector3(-Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);

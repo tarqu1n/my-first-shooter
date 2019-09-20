@@ -5,6 +5,15 @@ TextureImporter:
   - first:
       213: 1098179606456428539
     second: weapons_0
+  - first:
+      213: -5557420877203330147
+    second: weapons_1
+  - first:
+      213: -7888296697152109952
+    second: weapons_2
+  - first:
+      213: 698664279297640794
+    second: weapons_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -104,19 +113,82 @@ TextureImporter:
       name: weapons_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 145
-        width: 24
-        height: 109
+        x: 6
+        y: 283
+        width: 66
+        height: 222
       alignment: 9
-      pivot: {x: 0.48453423, y: 0.15028885}
+      pivot: {x: 0.4755367, y: 0.16059889}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 389b4bdf8a4399943ab1bb2279c55c68
+      spriteID: 16a2b6bc421427e47a1a948b01e5432b
       internalID: 1098179606456428539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_1
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 390
+        width: 72
+        height: 109
+      alignment: 9
+      pivot: {x: 0.48505032, y: 0.2827476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f87f13e08c4a0b4a91b44f1f1d292d9
+      internalID: -5557420877203330147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_2
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 210
+        width: 90
+        height: 295
+      alignment: 9
+      pivot: {x: 0.17708436, y: 0.32668352}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 318af1fb891cf604c86a247ce2c166ef
+      internalID: -7888296697152109952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_3
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 263
+        width: 73
+        height: 114
+      alignment: 9
+      pivot: {x: 0.5000001, y: 0.13648371}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cff3a0c1f3045fe4fb266d54257ba70f
+      internalID: 698664279297640794
       vertices: []
       indices: 
       edges: []
