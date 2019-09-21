@@ -13,8 +13,10 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
+        Vector3 vec = new Vector3(Vector2.up.x, Vector2.up.y, 0) * speed * Time.deltaTime;
         transform.Translate(Vector2.up * speed * Time.deltaTime);
     }
+
 
     void DestroyProjectile()
     {
