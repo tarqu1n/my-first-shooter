@@ -53,9 +53,12 @@ public class MonsterController : MonoBehaviour
     {
         currentHealth -= damage;
         Debug.Log("Damage taken");
-        if (damage <= 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
+        } else if (currentBehaviour != Behaviour.Attack)
+        {
+            SetBehaviour(Behaviour.Attack);
         }
     }
 

@@ -3,13 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(WeaponController))]
 public class RangedWeaponController : MonoBehaviour
 {
     public GameObject projectile;
     public GameObject projectileSpawn;
+
+    private WeaponController weaponController;
     void Start()
     {
-        
+        weaponController = GetComponent<WeaponController>();
     }
 
     void LateUpdate()
@@ -32,6 +35,7 @@ public class RangedWeaponController : MonoBehaviour
     public void FireProjectile()
     {
         Quaternion rotation = Quaternion.Euler(0f, 0f, transform.rotation.eulerAngles.z);
-        Instantiate(projectile, projectileSpawn.transform.position, rotation);
+        GameObject instance = Instantiate(projectile, projectileSpawn.transform.position, rotation);
+        instance.GetComponent<Projectile>().damage = weaponController.getDamage();
     }
 }

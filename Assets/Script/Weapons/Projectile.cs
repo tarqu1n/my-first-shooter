@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
 {
     public float speed;
     public float lifeTime;
+    public int damage;
+
     public GameObject hitAnimation;
     void Start()
     {
@@ -14,7 +16,6 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        Vector3 vec = new Vector3(Vector2.up.x, Vector2.up.y, 0) * speed * Time.deltaTime;
         transform.Translate(Vector2.up * speed * Time.deltaTime);
     }
 
@@ -26,9 +27,14 @@ public class Projectile : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log(collider.gameObject.tag);
-        if (collider.gameObject.tag == "Monster" || collider.gameObject.tag == "Terrain")
+        string colliderTag = collider.gameObject.tag;
+        if (colliderTag == "Monster")
         {
+            collider.gameObject.GetComponent<MonsterController>().TakeDamage(damage);
+        }
+        if (colliderTag == "Monster" || colliderTag == "Terrain")
+        {
+
             DestroyProjectile();
             Instantiate(hitAnimation, transform.position, Quaternion.identity);
         }
