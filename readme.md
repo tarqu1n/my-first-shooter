@@ -3,3 +3,4 @@
 
 ## TODO:
 - Knockback for enemies hit by melee
+- Recalculate AI grid for dynamically added items: https://arongranberg.com/astar/docs/graphupdates.html#recalculate-whole-graph

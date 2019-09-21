@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     public float speed;
     public float lifeTime;
+    public GameObject hitAnimation;
     void Start()
     {
         Invoke("DestroyProjectile", lifeTime);
@@ -25,10 +26,11 @@ public class Projectile : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("here");
-        if (collider.gameObject.tag == "Monster")
+        Debug.Log(collider.gameObject.tag);
+        if (collider.gameObject.tag == "Monster" || collider.gameObject.tag == "Terrain")
         {
             DestroyProjectile();
+            Instantiate(hitAnimation, transform.position, Quaternion.identity);
         }
     }
 }

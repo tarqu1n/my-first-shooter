@@ -2,22 +2,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Pathfinding;
 public class MonsterController : MonoBehaviour
 {
 
+    [Header("Config")]
     public float moveSpeed = 4f;
     public int startHealth;
-    public int health;
     public float attackRange;
     public Behaviour startBehaviour;
+    
+
+    [Header("Controllers")]
+    public GameObject agroRangeObject;
+
+    [Header("Effects")]
+    public GameObject deathEffect;
+
+    [Header("Current Config")]
+    public int currentHealth;
     public Behaviour currentBehaviour;
 
-    public GameObject deathEffect;
 
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
     private GameObject target;
+    private AgroController agroRangeController;
     
 
     private bool flippedDirection;
@@ -25,8 +35,9 @@ public class MonsterController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        health = startHealth;
+        currentHealth = startHealth;
         currentBehaviour = startBehaviour;
+        agroRangeController = agroRangeObject.GetComponent<AgroController>();
     }
 
     void Update()
@@ -38,14 +49,9 @@ public class MonsterController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + moveVelocity);
-    }
-
     public void TakeDamage (int damage)
     {
-        health -= damage;
+        currentHealth -= damage;
         Debug.Log("Damage taken");
         if (damage <= 0)
         {
@@ -57,22 +63,15 @@ public class MonsterController : MonoBehaviour
     {
         if (!target)
         {
-            target = aquireTarget();
+            target = AquireTarget();
         }
-
-        Collider2D targetCollider = target.GetComponent<Collider2D>();
-        Vector2 closestPoint = targetCollider.ClosestPoint(transform.position);
-        if (target && Vector2.Distance(transform.position, closestPoint) > attackRange)
+        if (target)
         {
-            // move towards target
-            moveVelocity = Vector2.MoveTowards(transform.position, closestPoint, moveSpeed * Time.deltaTime) - new Vector2(transform.position.x, transform.position.y);
-        } else
-        {
-            moveVelocity = new Vector2();
+            GetComponent<AIDestinationSetter>().target = target.transform;
         }
     }
 
-    public GameObject aquireTarget ()
+    public GameObject AquireTarget ()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
@@ -106,8 +105,22 @@ public class MonsterController : MonoBehaviour
         }
     }
 
+    public void SetBehaviour(Behaviour behaviour)
+    {
+        if (behaviour == Behaviour.Idle)
+        {
+            agroRangeController.Enable();
+            currentBehaviour = behaviour;
+        }
+        else if (behaviour == Behaviour.Attack)
+        {
+            currentBehaviour = behaviour;
+        }
+    }
+
     public enum Behaviour
     {
+        Idle = 0,
         Attack = 1
     }
 }
