@@ -29,11 +29,14 @@ public class HealthBar : MonoBehaviour
 
         if (hpPercentage < 0.2f)
         {
-            GetComponent<Image>().color = new Color(288f, 194f, 7f);
+            GetComponent<Image>().color = Color.red;
         }
         else if (hpPercentage < 0.5f)
         {
-            GetComponent<Image>().color = new Color(184f, 52f, 0f);
+            GetComponent<Image>().color = Color.yellow;
+        } else if (hpPercentage > 0.5f)
+        {
+            GetComponent<Image>().color = Color.green;
         }
         
     }

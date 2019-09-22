@@ -8,6 +8,7 @@ using Pathfinding;
 public class MonsterController : MonoBehaviour
 {
     [Header("Config")]
+    public string id;
     public float moveSpeed = 4f;
     public int startHealth;
     public float attackRange;

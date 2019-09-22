@@ -1,0 +1,10 @@
+{
+  "name": "Frogs...?",
+  "enemies": [
+    {
+      
+      "type": "Merple",
+      "quantity": 20
+    }
+  ]
+}
