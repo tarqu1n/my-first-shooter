@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class WaveSpawner : MonoBehaviour
 {
+    public GameObject[] enemies;
+    public GameObject[] spawnPoints;
+
     // Start is called before the first frame update
     void Start()
     {

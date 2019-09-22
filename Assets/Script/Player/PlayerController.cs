@@ -5,9 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject equipped;
+    public int startHealth;
+
+    [Header("Current Values")]
+    public int currentHealth;
+    public int currentMaxHealth;
+
     void Start()
     {
-        
+        currentHealth = currentMaxHealth = startHealth;
     }
 
     // Update is called once per frame
