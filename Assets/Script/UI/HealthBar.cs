@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
@@ -22,7 +23,18 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        (transform as RectTransform).sizeDelta = new Vector2(fullWidth * (float)playerController.currentHealth / (float)playerController.currentMaxHealth, fullHeight);
-        // rectTransform.rect.width = fullWidth * (float)playerController.currentHealth;
+        float hpPercentage = (float)playerController.currentHealth / (float)playerController.currentMaxHealth;
+        RectTransform barTransform = (transform as RectTransform);
+        barTransform.sizeDelta = new Vector2(fullWidth * hpPercentage, fullHeight);
+
+        if (hpPercentage < 0.2f)
+        {
+            GetComponent<Image>().color = new Color(288f, 194f, 7f);
+        }
+        else if (hpPercentage < 0.5f)
+        {
+            GetComponent<Image>().color = new Color(184f, 52f, 0f);
+        }
+        
     }
 }

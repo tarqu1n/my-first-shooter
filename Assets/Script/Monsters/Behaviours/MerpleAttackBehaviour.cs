@@ -32,7 +32,6 @@ public class MerpleAttackBehaviour : AttackBehaviour
     }
     public override void BasicAttack()
     {
-        Debug.Log("Attack");
         monsterController.animator.ResetTrigger("Attack");
         monsterController.animator.SetTrigger("Attack");
         attackTimer = baseAttackSpeed;

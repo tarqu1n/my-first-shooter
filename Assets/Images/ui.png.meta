@@ -104,18 +104,18 @@ TextureImporter:
       name: ui_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 359
-        width: 410
-        height: 138
+        x: 1
+        y: 375
+        width: 1023
+        height: 137
       alignment: 9
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.08048702, y: 0.48543018}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1befbb15d3655284abe485250b327d6d
+      spriteID: bb360b774489cec4b846750a67aa4d9e
       internalID: 5707218116961789024
       vertices: []
       indices: 
