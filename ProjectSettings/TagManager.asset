@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Monster
   - Terrain
+  - HitboxMonster
+  - HitboxTerrain
+  - HitboxPlayer
   layers:
   - Default
   - TransparentFX

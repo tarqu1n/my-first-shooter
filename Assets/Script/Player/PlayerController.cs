@@ -21,4 +21,9 @@ public class PlayerController : MonoBehaviour
     {
         
     }
+
+    public void RecieveDamage(int damage)
+    {
+        currentHealth -= damage;
+    }
 }

@@ -22,10 +22,9 @@ public class AgroController : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter2D(Collider2D collider)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collider.gameObject.tag);
-        if (collider.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             monsterController.currentBehaviour = MonsterController.Behaviour.Attack;
             collider.enabled = false;

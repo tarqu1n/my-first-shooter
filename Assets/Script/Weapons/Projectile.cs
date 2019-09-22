@@ -32,9 +32,8 @@ public class Projectile : MonoBehaviour
         {
             collider.gameObject.GetComponent<MonsterController>().TakeDamage(damage);
         }
-        if (colliderTag == "Monster" || colliderTag == "Terrain")
+        if (colliderTag == "HitboxMonster" || colliderTag == "HitboxTerrain")
         {
-
             DestroyProjectile();
             Instantiate(hitAnimation, transform.position, Quaternion.identity);
         }

@@ -3,18 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+
+[RequireComponent(typeof(AIPath))]
 public class MonsterController : MonoBehaviour
 {
-
     [Header("Config")]
     public float moveSpeed = 4f;
     public int startHealth;
     public float attackRange;
     public Behaviour startBehaviour;
     
-
     [Header("Controllers")]
     public GameObject agroRangeObject;
+    public Animator animator;
+    public AttackBehaviour attackBehaviour;
 
     [Header("Effects")]
     public GameObject deathEffect;
@@ -23,21 +25,18 @@ public class MonsterController : MonoBehaviour
     public int currentHealth;
     public Behaviour currentBehaviour;
 
-
-    private Rigidbody2D rb;
-    private Vector2 moveVelocity;
     private GameObject target;
     private AgroController agroRangeController;
-    
+    private AIPath aiPath;
 
     private bool flippedDirection;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         currentHealth = startHealth;
         currentBehaviour = startBehaviour;
         agroRangeController = agroRangeObject.GetComponent<AgroController>();
+        aiPath = GetComponent<AIPath>();
     }
 
     void Update()
@@ -63,13 +62,15 @@ public class MonsterController : MonoBehaviour
 
     public void AttackTarget ()
     {
+        
         if (!target)
         {
             target = AquireTarget();
+            
         }
-        if (target)
+        if (attackBehaviour)
         {
-            GetComponent<AIDestinationSetter>().target = target.transform;
+            attackBehaviour.RecieveTarget(target);
         }
     }
 
@@ -95,16 +96,19 @@ public class MonsterController : MonoBehaviour
 
     void SetDirection()
     {
-        if (moveVelocity.x > 0 && !flippedDirection)
+        if (aiPath.desiredVelocity.x < 0 && !flippedDirection)
         {
             transform.localScale = new Vector3(-Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             flippedDirection = true;
         }
-        else if (moveVelocity.x < 0 && flippedDirection)
+        else if (aiPath.desiredVelocity.x > 0 && flippedDirection)
         {
             transform.localScale = new Vector3(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             flippedDirection = false;
         }
+
+        animator.SetFloat("Vertical Vector", aiPath.desiredVelocity.y);
+        animator.SetFloat("Speed", aiPath.desiredVelocity.sqrMagnitude);
     }
 
     public void SetBehaviour(Behaviour behaviour)
