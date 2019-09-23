@@ -67,7 +67,6 @@ public class MonsterController : MonoBehaviour
         if (!target)
         {
             target = AquireTarget();
-            
         }
         if (attackBehaviour)
         {

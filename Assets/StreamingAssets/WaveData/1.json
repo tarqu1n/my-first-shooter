@@ -2,9 +2,10 @@
   "name": "Frogs...?",
   "enemies": [
     {
-      
+
       "type": "Merple",
-      "quantity": 20
+      "quantity": 20,
+      "stage": 1
     }
   ]
 }

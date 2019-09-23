@@ -10,15 +10,28 @@ public class WaveManager : MonoBehaviour
     public GameObject[] monsters;
 
     private int currentWave;
+    public WaveState waveState;
+    private SpawnPointController[] spawnPointControllers;
     void Start()
     {
+        spawnPointControllers = new SpawnPointController[spawnPoints.Length];
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            spawnPointControllers[i] = spawnPoints[i].GetComponent<SpawnPointController>();
+        }
+
         LoadWave(1);
-        Debug.Log("here");
+    }
+
+    private void AssignToSpawnPoints()
+    {
+
     }
 
     public void SpawnWave(WaveData waveData)
     {
-        foreach(MonsterDatum monsterData in waveData.enemies)
+
+        foreach (MonsterDatum monsterData in waveData.enemies)
         {
             foreach (GameObject monsterObject in monsters)
             {
@@ -26,7 +39,7 @@ public class WaveManager : MonoBehaviour
                 {
                     for (int i = 0; i < monsterData.quantity; i++)
                     {
-                         Instantiate(monsterObject, spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position, Quaternion.identity);
+                        spawnPointControllers[Random.Range(0, spawnPoints.Length)].Assign(monsterObject, monsterData.stage, 1);
                     }
                 }
             }
@@ -39,17 +52,33 @@ public class WaveManager : MonoBehaviour
         string fileName = $"WaveData/{waveNumber}.json";
 
         string filePath = Path.Combine(Application.streamingAssetsPath, fileName);
-        if (File.Exists(filePath))
+        StartCoroutine(loadStreamingAsset(filePath));
+
+
+    }
+    IEnumerator loadStreamingAsset(string filePath)
+    {
+        if (filePath.Contains("://") || filePath.Contains(":///"))
         {
-            // Read the json from the file into a string
-            string dataAsJson = File.ReadAllText(filePath);
-            // Pass the json to JsonUtility, and tell it to create a GameData object from it
-            WaveData waveData = JsonUtility.FromJson<WaveData>(dataAsJson);
+            WWW www = new WWW(filePath);
+            yield return www;
+            WaveData waveData = JsonUtility.FromJson<WaveData>(www.text);
             SpawnWave(waveData);
         }
         else
         {
-            Debug.LogError($"Cannot load wave {waveNumber} data!");
+            if (File.Exists(filePath))
+            {
+                // Read the json from the file into a string
+                string dataAsJson = File.ReadAllText(filePath);
+                // Pass the json to JsonUtility, and tell it to create a GameData object from it
+                WaveData waveData = JsonUtility.FromJson<WaveData>(dataAsJson);
+                SpawnWave(waveData);
+            }
+            else
+            {
+                Debug.LogError($"Cannot load {filePath} data!");
+            }
         }
     }
 }
@@ -58,6 +87,7 @@ public class WaveManager : MonoBehaviour
 public class MonsterDatum
 {
     public string type;
+    public int stage;
     public int quantity;
 }
 
@@ -66,4 +96,10 @@ public class WaveData
 {
     public string name;
     public List<MonsterDatum> enemies;
+}
+
+public enum WaveState
+{
+    Spawning,
+    Complete
 }
