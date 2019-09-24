@@ -12,15 +12,17 @@ public class MerpleAttackBehaviour : AttackBehaviour
     private GameObject currentTarget;
     private MonsterController monsterController;
     private float attackTimer;
+    private AIMovementController movementController;
     void Start()
     {
         monsterController = GetComponent<MonsterController>();
+        movementController = GetComponent<AIMovementController>();
         attackTimer = baseAttackSpeed;
     }
 
     void FixedUpdate()
     {
-        if (currentTarget && attackTimer <= 0 && Vector2.Distance(transform.position, currentTarget.transform.position) < basicAttackRange)
+        if (currentTarget && attackTimer <= 0 && Vector2.Distance(transform.position, Physics2D.ClosestPoint(transform.position, currentTarget.GetComponent<Rigidbody2D>())) < basicAttackRange)
         {
             BasicAttack();
         }
@@ -37,7 +39,7 @@ public class MerpleAttackBehaviour : AttackBehaviour
     public override void RecieveTarget (GameObject target)
     {
         currentTarget = target;
-        // GetComponent<AIDestinationSetter>().target = target.transform;
+        movementController.target = target;
     }
 
     // This is called by AttackCollisionHandlers further down in the tree.

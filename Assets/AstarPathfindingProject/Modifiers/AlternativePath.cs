@@ -44,8 +44,7 @@ namespace Pathfinding {
 		bool destroyed;
 
 		public override void Apply (Path p) {
-			if (this == null) return;
-
+			// if (this == null) return;
 			ApplyNow(p.path);
 		}
 

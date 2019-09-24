@@ -39,7 +39,7 @@ public class WaveManager : MonoBehaviour
                 {
                     for (int i = 0; i < monsterData.quantity; i++)
                     {
-                        spawnPointControllers[Random.Range(0, spawnPoints.Length)].Assign(monsterObject, monsterData.stage, 1);
+                        spawnPointControllers[Random.Range(0, spawnPoints.Length)].Assign(monsterObject, monsterData.stage, 1, monsterData.attackChance);
                     }
                 }
             }
@@ -89,6 +89,7 @@ public class MonsterDatum
     public string type;
     public int stage;
     public int quantity;
+    public float attackChance;
 }
 
 [System.Serializable]

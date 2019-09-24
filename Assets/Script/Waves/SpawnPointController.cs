@@ -24,7 +24,16 @@ public class SpawnPointController : MonoBehaviour
         if (queue.Count > 0)
         {
             GameObject instance = Instantiate(queue[0].monsters[0].monster, transform.position, Quaternion.identity);
-            instance.GetComponent<MonsterController>().startBehaviour = MonsterController.Behaviour.Attack;
+
+            // attack chance
+            float rand = Random.Range(0f, 1f);
+            if (rand < queue[0].monsters[0].attackChance)
+            {
+                instance.GetComponent<MonsterController>().startBehaviour = MonsterController.Behaviour.Attack;
+            } else
+            {
+                instance.GetComponent<MonsterController>().startBehaviour = MonsterController.Behaviour.Rush;
+            }
             queue[0].monsters[0].quantity--;
 
             if (queue[0].monsters[0].quantity <= 0)
@@ -38,7 +47,7 @@ public class SpawnPointController : MonoBehaviour
         }
     }
 
-    public void Assign(GameObject monster, int stage, int quantity)
+    public void Assign(GameObject monster, int stage, int quantity, float attackChance)
     {
         foreach (QueueItem item in queue)
         {
@@ -75,7 +84,8 @@ public class SpawnPointController : MonoBehaviour
                 new MonsterQueueItem()
                 {
                     monster = monster,
-                    quantity = quantity
+                    quantity = quantity,
+                    attackChance = attackChance,
                 }
             }
         });
@@ -86,6 +96,7 @@ public class SpawnPointController : MonoBehaviour
     {
         public GameObject monster;
         public int quantity;
+        public float attackChance;
 
     }
     private class QueueItem

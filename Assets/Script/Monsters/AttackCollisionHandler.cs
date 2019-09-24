@@ -18,7 +18,7 @@ public class AttackCollisionHandler : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
-        if (!isColliding && collider.gameObject.tag == "HitboxPlayer")
+        if (!isColliding && (collider.gameObject.tag == "HitboxPlayer" || collider.gameObject.tag == "HitboxShard"))
         {
             isColliding = true;
             attackBehaviour.OnHitTarget(collider.gameObject);

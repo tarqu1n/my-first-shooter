@@ -5,7 +5,8 @@
 
       "type": "Merple",
       "quantity": 20,
-      "stage": 1
+      "stage": 1,
+      "attackChance": 0
     }
   ]
 }

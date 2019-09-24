@@ -28,9 +28,9 @@ public class Projectile : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collider)
     {
         string colliderTag = collider.gameObject.tag;
-        if (colliderTag == "Monster")
+        if (colliderTag == "HitboxMonster")
         {
-            collider.gameObject.GetComponent<MonsterController>().TakeDamage(damage);
+            collider.gameObject.GetComponentInParent<MonsterController>().TakeDamage(damage);
         }
         if (colliderTag == "HitboxMonster" || colliderTag == "HitboxTerrain")
         {

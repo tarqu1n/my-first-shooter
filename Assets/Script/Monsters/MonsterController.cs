@@ -42,7 +42,7 @@ public class MonsterController : MonoBehaviour
 
     void Update()
     {
-        if (currentBehaviour == Behaviour.Attack)
+        if (currentBehaviour == Behaviour.Attack || currentBehaviour == Behaviour.Rush)
         {
             AttackTarget();
         }
