@@ -641,9 +641,8 @@ GameObject:
   - component: {fileID: 5540690113090060246}
   - component: {fileID: 5540690113090060247}
   - component: {fileID: 5540690113090060240}
-  - component: {fileID: 5540690113090060241}
-  - component: {fileID: 5540690113090060242}
   - component: {fileID: 5540690113090060245}
+  - component: {fileID: 1958303554}
   m_Layer: 8
   m_Name: Merple
   m_TagString: Monster
@@ -691,7 +690,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -780,7 +779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   drawGizmos: 1
-  detailedGizmos: 0
+  detailedGizmos: 1
   startEndModifier:
     addPoints: 0
     exactStartPoint: 3
@@ -794,56 +793,6 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &5540690113090060241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5540690113090060239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 2
-  radius: 0.5
-  height: 0.01
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 3
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  targetCompatibility: {fileID: 0}
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 2
-  pickNextWaypointDist: 2
-  endReachedDistance: 1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
---- !u!114 &5540690113090060242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5540690113090060239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 0}
 --- !u!114 &5540690113090060245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -858,6 +807,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseAttackSpeed: 5
   basicAttackDamage: 1
+--- !u!114 &1958303554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5540690113090060239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df1476d11c81ff54ca15a3d08829f270, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 200
+  nextWaypointDistance: 1
+  animator: {fileID: 5540690112138903559}
 --- !u!1 &5540690113145068304
 GameObject:
   m_ObjectHideFlags: 0

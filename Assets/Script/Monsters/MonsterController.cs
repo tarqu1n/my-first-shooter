@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-[RequireComponent(typeof(AIPath))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class MonsterController : MonoBehaviour
 {
     [Header("Config")]
@@ -26,9 +26,9 @@ public class MonsterController : MonoBehaviour
     public int currentHealth;
     public Behaviour currentBehaviour;
 
-    private GameObject target;
+    public GameObject target;
     private AgroController agroRangeController;
-    private AIPath aiPath;
+    private Rigidbody2D rb;
 
     private bool flippedDirection;
 
@@ -37,12 +37,11 @@ public class MonsterController : MonoBehaviour
         currentHealth = startHealth;
         currentBehaviour = startBehaviour;
         agroRangeController = agroRangeObject.GetComponent<AgroController>();
-        aiPath = GetComponent<AIPath>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        SetDirection();
         if (currentBehaviour == Behaviour.Attack)
         {
             AttackTarget();
@@ -76,40 +75,33 @@ public class MonsterController : MonoBehaviour
 
     public GameObject AquireTarget ()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] targets;
 
-        GameObject closestPlayer = null;
-        float distance = Mathf.Infinity;
-        foreach (GameObject player in players)
+        if (currentBehaviour == Behaviour.Attack)
         {
-            Vector2 diff = player.transform.position - transform.position;
+            targets = GameObject.FindGameObjectsWithTag("Player");
+        } else
+        {
+            targets = GameObject.FindGameObjectsWithTag("Shard");
+        }
+
+        GameObject closestTarget = null;
+        float distance = Mathf.Infinity;
+        foreach (GameObject target in targets)
+        {
+            Vector2 diff = target.transform.position - transform.position;
             float currDistance = diff.sqrMagnitude;
             if (currDistance < distance)
             {
-                closestPlayer = player;
+                closestTarget = target;
                 distance = currDistance;
             }
         }
 
-        return closestPlayer;
+        return closestTarget;
     }
 
-    void SetDirection()
-    {
-        if (aiPath.desiredVelocity.x < 0 && !flippedDirection)
-        {
-            transform.localScale = new Vector3(-Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            flippedDirection = true;
-        }
-        else if (aiPath.desiredVelocity.x > 0 && flippedDirection)
-        {
-            transform.localScale = new Vector3(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            flippedDirection = false;
-        }
 
-        animator.SetFloat("Vertical Vector", aiPath.desiredVelocity.y);
-        animator.SetFloat("Speed", aiPath.desiredVelocity.sqrMagnitude);
-    }
 
     public void SetBehaviour(Behaviour behaviour)
     {
@@ -127,6 +119,8 @@ public class MonsterController : MonoBehaviour
     public enum Behaviour
     {
         Idle = 0,
-        Attack = 1
+        Attack = 1, // attack player
+        Rush = 2 // attack crystal
+          
     }
 }

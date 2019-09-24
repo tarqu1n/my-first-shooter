@@ -9,6 +9,8 @@ TagManager:
   - HitboxMonster
   - HitboxTerrain
   - HitboxPlayer
+  - Shard
+  - HitboxShard
   layers:
   - Default
   - TransparentFX
