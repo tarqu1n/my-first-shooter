@@ -143,18 +143,18 @@ TextureImporter:
       name: Flinkle_0
       rect:
         serializedVersion: 2
-        x: 25
-        y: 116
-        width: 110
-        height: 107
+        x: 29
+        y: 173
+        width: 40
+        height: 26
       alignment: 9
-      pivot: {x: 0.552224, y: 0.44247693}
+      pivot: {x: 0.17060547, y: 0.32625404}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7fc7ea2d7e4eca4695fa15b6867c9b6
+      spriteID: b1107e8f80bca6e41a4874b78589be7b
       internalID: 5869485874289125918
       vertices: []
       indices: 
@@ -164,7 +164,28 @@ TextureImporter:
       name: Flinkle_1
       rect:
         serializedVersion: 2
-        x: 183
+        x: 86
+        y: 146
+        width: 82
+        height: 72
+      alignment: 9
+      pivot: {x: 0.8075878, y: 0.33268866}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ac6fe6d1489d544b858ad2c096034a5
+      internalID: 8769828059258048161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flinkle_2
+      rect:
+        serializedVersion: 2
+        x: 200
         y: 186
         width: 38
         height: 36
@@ -175,28 +196,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b1cfcbd4f6e1204aa45db0ad62ae82a
-      internalID: 8769828059258048161
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flinkle_2
-      rect:
-        serializedVersion: 2
-        x: 253
-        y: 146
-        width: 79
-        height: 71
-      alignment: 9
-      pivot: {x: 0.08966876, y: 0.25148934}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b3001562a04d45441ab1363ab98f7395
+      spriteID: 956defe82bfc25f4db3617c60b915a4e
       internalID: 2970155129147550169
       vertices: []
       indices: 
@@ -206,18 +206,18 @@ TextureImporter:
       name: Flinkle_3
       rect:
         serializedVersion: 2
-        x: 352
-        y: 173
-        width: 40
-        height: 26
+        x: 286
+        y: 116
+        width: 110
+        height: 107
       alignment: 9
-      pivot: {x: 0.82826537, y: 0.3579624}
+      pivot: {x: 0.44866526, y: 0.48240903}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c2c64d9f21272b4a9dba81f5bcba174
+      spriteID: f6dda4010427e0549b41fab17c52ddb2
       internalID: -3806764869630534352
       vertices: []
       indices: 
@@ -227,18 +227,18 @@ TextureImporter:
       name: Flinkle_4
       rect:
         serializedVersion: 2
-        x: 161
-        y: 74
-        width: 79
-        height: 92
+        x: 8
+        y: 96
+        width: 71
+        height: 40
       alignment: 9
-      pivot: {x: 0.86877906, y: 0.41079754}
+      pivot: {x: 0.19247681, y: 0.38706493}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c73eb99bed943a41baee45a20c278bb
+      spriteID: d5f3b9d1c16bc134c893b678ea99d7aa
       internalID: -2626126670546900304
       vertices: []
       indices: 
@@ -248,18 +248,18 @@ TextureImporter:
       name: Flinkle_5
       rect:
         serializedVersion: 2
-        x: 276
+        x: 111
         y: 88
         width: 34
         height: 46
       alignment: 9
-      pivot: {x: 0.6930973, y: 0.7408467}
+      pivot: {x: 0.34499067, y: 0.7946139}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6012ee20422de13489244f10afdc6ab6
+      spriteID: 6df929225c0dc79428cc2aa114edcdbe
       internalID: -4883408994740636578
       vertices: []
       indices: 
@@ -269,18 +269,18 @@ TextureImporter:
       name: Flinkle_6
       rect:
         serializedVersion: 2
-        x: 342
-        y: 96
-        width: 71
-        height: 40
+        x: 181
+        y: 74
+        width: 79
+        height: 92
       alignment: 9
-      pivot: {x: 0.7658485, y: 0.3461256}
+      pivot: {x: 0.104488134, y: 0.5736535}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d48450efd57f7c4e93b6cf74624309c
+      spriteID: d9b5f2bfbce90b6488a0d5375d5ab5c4
       internalID: 771803330557334680
       vertices: []
       indices: 
@@ -290,18 +290,18 @@ TextureImporter:
       name: Flinkle_7
       rect:
         serializedVersion: 2
-        x: 9
-        y: 48
-        width: 45
-        height: 40
+        x: 234
+        y: 6
+        width: 52
+        height: 73
       alignment: 9
-      pivot: {x: 0.24468277, y: 0.87955666}
+      pivot: {x: 0.8692111, y: 0.91254884}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c82b1bd21b3634e40aeac20f6e5ddb5f
+      spriteID: d41d28e27d73f13478841639b7a311af
       internalID: -6215204464467655724
       vertices: []
       indices: 
@@ -311,18 +311,18 @@ TextureImporter:
       name: Flinkle_8
       rect:
         serializedVersion: 2
-        x: 77
+        x: 299
         y: 60
         width: 45
         height: 31
       alignment: 9
-      pivot: {x: 0.80090976, y: 0.5926553}
+      pivot: {x: 0.17374268, y: 0.6457234}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc137617f953f7348971082181835791
+      spriteID: 5a15cfefcf82f4a4799ffef80426e3c6
       internalID: 3205391522834418455
       vertices: []
       indices: 
@@ -332,18 +332,18 @@ TextureImporter:
       name: Flinkle_9
       rect:
         serializedVersion: 2
-        x: 135
-        y: 6
-        width: 55
-        height: 73
+        x: 367
+        y: 48
+        width: 45
+        height: 40
       alignment: 9
-      pivot: {x: 0.22644591, y: 0.9103314}
+      pivot: {x: 0.65894574, y: 0.82939494}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb0509b0db33ae942932856b46a5780e
+      spriteID: 0c874f3bb168cb84e9c83d9ba5df0a92
       internalID: -6236283186767646668
       vertices: []
       indices: 
@@ -353,18 +353,18 @@ TextureImporter:
       name: Flinkle_10
       rect:
         serializedVersion: 2
-        x: 244
+        x: 140
         y: 13
         width: 37
         height: 40
       alignment: 9
-      pivot: {x: 0.42236987, y: 0.18199292}
+      pivot: {x: 0.53052294, y: 0.19883995}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4706e63df4f0174eb3a35d180fcd8c8
+      spriteID: 9bcdea72378b5ae4eac9190cb39b2014
       internalID: 8613417613168655265
       vertices: []
       indices: 

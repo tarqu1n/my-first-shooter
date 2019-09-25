@@ -25,7 +25,6 @@ public class AIMovementController : MonoBehaviour
     void Start()
     {
         seeker = GetComponent<Seeker>();
-
         seeker.RegisterModifier(new AlternativePath());
         rb = GetComponent<Rigidbody2D>();
     }

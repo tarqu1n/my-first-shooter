@@ -6,7 +6,14 @@
       "type": "Merple",
       "quantity": 20,
       "stage": 1,
-      "attackChance": 0
+      "attackChance": 0.5
+    },
+    {
+
+      "type": "Finkle",
+      "quantity": 20,
+      "stage": 1,
+      "attackChance": 0.5
     }
   ]
 }
