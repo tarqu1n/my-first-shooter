@@ -62,7 +62,6 @@ public class MonsterController : MonoBehaviour
 
     public void AttackTarget ()
     {
-        
         if (!target)
         {
             target = AquireTarget();
@@ -101,8 +100,6 @@ public class MonsterController : MonoBehaviour
         return closestTarget;
     }
 
-
-
     public void SetBehaviour(Behaviour behaviour)
     {
         if (behaviour == Behaviour.Idle)
@@ -121,6 +118,5 @@ public class MonsterController : MonoBehaviour
         Idle = 0,
         Attack = 1, // attack player
         Rush = 2 // attack crystal
-          
     }
 }

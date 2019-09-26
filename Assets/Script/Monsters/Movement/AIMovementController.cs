@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 using System;
+using Random = UnityEngine.Random;
 
 public class AIMovementController : MonoBehaviour
 {
-    
-
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
     public float pathRecalcTime = 0.5f;
 
     public GameObject target;
+    public Vector3 targetPosition = Vector3.zero;
     public Animator animator;
 
     private Path path;
     private int currentWaypoint = 0;
     private bool reachedEndOfPath = false;
     private bool flippedDirection;
+    private bool stopped = false;
 
     private Seeker seeker;
     private Rigidbody2D rb;
@@ -35,8 +36,12 @@ public class AIMovementController : MonoBehaviour
         {
             Vector2 closestPoint = Physics2D.ClosestPoint(rb.position, target.GetComponent<Rigidbody2D>());
             seeker.StartPath(rb.position, closestPoint, OnPathingComplete);
+        } else if (targetPosition != Vector3.zero)
+        {
+            seeker.StartPath(rb.position, targetPosition, OnPathingComplete);
         }
     }
+
     private void OnPathingComplete(Path p)
     {
         if (!p.error)
@@ -46,23 +51,73 @@ public class AIMovementController : MonoBehaviour
             path = p;
             currentWaypoint = 1;
         }
-        else
+    }
+
+    public void SetTarget(GameObject newTarget)
+    {
+        if (!target || (target.GetInstanceID() != newTarget.GetInstanceID()))
         {
-            Debug.LogError(p.error);
+            target = newTarget;
+            targetPosition = Vector3.zero;
+            if (path != null)
+            {
+                seeker.CancelCurrentPathRequest();
+            }
+            UpdatePath();
         }
+    }
+
+    public void SetTarget(Vector3 newTargetPosition)
+    {
+        if (targetPosition != newTargetPosition)
+        {
+            target = null;
+            targetPosition = newTargetPosition;
+
+            if (path != null)
+            {
+                seeker.CancelCurrentPathRequest();
+            }
+            UpdatePath();
+        }
+    }
+
+    public void StopMovement()
+    {
+        stopped = true;
+    }
+
+    public void StartMovement()
+    {
+        if (target || targetPosition != Vector3.zero)
+        {
+            stopped = false;
+            UpdatePath();
+        }
+    }
+
+    public void MoveRandomDistance(float distance)
+    {
+        float currX = rb.position.x;
+        float currY = rb.position.y;
+
+        float RandX = Random.Range(currX - distance, currX + distance);
+        float RandY = Random.Range(currY - distance, currY + distance);
+
+        SetTarget(new Vector3(RandX, RandY));
     }
 
     void FixedUpdate()
     {
         // update path on timer
         pathRecalcTime -= Time.deltaTime;
-        if (pathRecalcTime <= 0f)
+        if (pathRecalcTime <= 0f && !stopped && (target || targetPosition != Vector3.zero))
         {
             UpdatePath();
             pathRecalcTime = 0.5f;
         }
 
-        if (path == null)
+        if (path == null || stopped)
             return;
 
         if (currentWaypoint >= path.vectorPath.Count)
@@ -87,8 +142,6 @@ public class AIMovementController : MonoBehaviour
         {
             currentWaypoint++;
         }
-
-        
     }
 
     void SetDirection(Vector2 force)
@@ -106,6 +159,13 @@ public class AIMovementController : MonoBehaviour
 
         animator.SetFloat("Vertical Force", force.y);
         animator.SetFloat("Speed", rb.velocity.sqrMagnitude);
-        animator.SetFloat("Target Vertical Distance", (target.transform.position - transform.position).y);
+
+        if (target)
+        {
+            animator.SetFloat("Target Vertical Distance", (target.transform.position - transform.position).y);
+        } else if (targetPosition != Vector3.zero)
+        {
+            animator.SetFloat("Target Vertical Distance", (targetPosition - transform.position).y);
+        }
     }
 }

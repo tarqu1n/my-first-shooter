@@ -1032,7 +1032,7 @@ MonoBehaviour:
   attackBehaviour: {fileID: 7214148312908817797}
   deathEffect: {fileID: 0}
   currentHealth: 0
-  currentBehaviour: 0
+  currentBehaviour: 1
   target: {fileID: 0}
 --- !u!114 &7126516059363680820
 MonoBehaviour:
@@ -1078,6 +1078,7 @@ MonoBehaviour:
   nextWaypointDistance: 1
   pathRecalcTime: 0.5
   target: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
   animator: {fileID: 7126516060323470819}
 --- !u!114 &7214148312908817797
 MonoBehaviour:

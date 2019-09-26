@@ -13,6 +13,7 @@ public class MerpleAttackBehaviour : AttackBehaviour
     private MonsterController monsterController;
     private float attackTimer;
     private AIMovementController movementController;
+
     void Start()
     {
         monsterController = GetComponent<MonsterController>();
@@ -39,7 +40,7 @@ public class MerpleAttackBehaviour : AttackBehaviour
     public override void RecieveTarget (GameObject target)
     {
         currentTarget = target;
-        movementController.target = target;
+        movementController.SetTarget(target);
     }
 
     // This is called by AttackCollisionHandlers further down in the tree.

@@ -25,20 +25,37 @@ public class FinkleAttackBehaviour : AttackBehaviour
 
     void FixedUpdate()
     {
-        if (currentTarget && attackTimer <= 0 && Vector2.Distance(transform.position, Physics2D.ClosestPoint(transform.position, currentTarget.GetComponent<Rigidbody2D>())) < basicAttackRange)
+        if (currentTarget)
         {
-            BasicAttack();
+            bool targetInRange = Vector2.Distance(transform.position, Physics2D.ClosestPoint(transform.position, currentTarget.GetComponent<Rigidbody2D>())) < basicAttackRange;
+            if (attackTimer <= 0 && targetInRange)
+            {
+                BasicAttack();
+                
+                // chance to move randomly
+                if (Random.Range(0f, 1f) < 0.5)
+                {
+                    movementController.MoveRandomDistance(3);
+                    movementController.StartMovement();
+                }
+            } else if (!targetInRange)
+            {
+                movementController.SetTarget(currentTarget);
+                movementController.StartMovement();
+            }
         }
 
         attackTimer -= Time.deltaTime;
     }
     public override void BasicAttack()
     {
+        movementController.StopMovement();
+
         monsterController.animator.ResetTrigger("Attack");
         monsterController.animator.SetTrigger("Attack");
         attackTimer = baseAttackSpeed;
 
-        // make weapon face camera
+        // fire projectile
         Vector3 mouseInWorldSpace = currentTarget.transform.position;
         Vector3 difference = mouseInWorldSpace - transform.position;
         float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
@@ -53,8 +70,11 @@ public class FinkleAttackBehaviour : AttackBehaviour
 
     public override void RecieveTarget (GameObject target)
     {
-        currentTarget = target;
-        movementController.target = target;
+        if (!currentTarget || currentTarget.GetInstanceID() != target.GetInstanceID())
+        {
+            currentTarget = target;
+            movementController.SetTarget(target);
+        }
     }
 
     // This is called by AttackCollisionHandlers further down in the tree.
