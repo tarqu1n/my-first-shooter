@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Collections;
 using System.IO;
 using UnityEngine;
 
@@ -8,6 +7,8 @@ public class WaveManager : MonoBehaviour
 {
     public GameObject[] spawnPoints;
     public GameObject[] monsters;
+
+    public WaveInfo waveInfo;
 
     private int currentWave;
     public WaveState waveState;
@@ -48,7 +49,8 @@ public class WaveManager : MonoBehaviour
 
     void LoadWave(int waveNumber)
     {
-        currentWave = 1;
+        waveInfo.ChangeWave(waveNumber);
+        currentWave = waveNumber;
         string fileName = $"WaveData/{waveNumber}.json";
 
         string filePath = Path.Combine(Application.streamingAssetsPath, fileName);
