@@ -33,7 +33,7 @@ public class RangedWeaponController : MonoBehaviour
         Vector3 mouseInWorldSpace = Camera.main.ScreenToWorldPoint(mousePos);
 
         // work out angle between mouse in world space and weapon
-        Vector3 difference = mouseInWorldSpace - projectileSpawn.transform.position;
+        Vector3 difference = mouseInWorldSpace - transform.position;
         float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(-30f, transform.rotation.y, rotZ - 90f); // make weapon face camera
     }
@@ -44,7 +44,7 @@ public class RangedWeaponController : MonoBehaviour
         if (hitPlane.Raycast(ray, out float enter))
         {
             Vector3 hitPoint = ray.GetPoint(enter);
-            Vector3 difference = hitPoint - projectileSpawn.transform.position;
+            Vector3 difference = hitPoint - transform.position;
             
             // work out angle between two points
             float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
