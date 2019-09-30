@@ -17,23 +17,28 @@ public class PlayerControls : MonoBehaviour
 
     private Vector2 moveVelocity;
     private bool flippedDirection;
+
+    Plane hitPlane;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         playerController = GetComponent<PlayerController>();
         attackController = GetComponent<AttackController>();
+
+        hitPlane = new Plane(Vector3.forward, new Vector3(0, 0, 0));
     }
     void Update()
     {
         HandleMoveInput();
         SetDirection();
+
+        HandleAction();
     }
 
     void FixedUpdate()
     {
         HandleMove();
-        HandleAction();
     }
 
     void HandleAction()

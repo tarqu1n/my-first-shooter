@@ -1024,7 +1024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   moveSpeed: 4
-  startHealth: 5
+  startHealth: 2
   attackRange: 1
   startBehaviour: 0
   agroRangeObject: {fileID: 7126516059240515441}

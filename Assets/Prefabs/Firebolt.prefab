@@ -326,9 +326,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff9646b2f32073458cfc640ddda74cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
   lifeTime: 5
-  damage: 0
+  damage: 1
+  ownerType: 1
   hitAnimation: {fileID: 6887735230554961311, guid: 261126771db85c64a8475f954c49cef3,
     type: 3}
 --- !u!58 &1458035258

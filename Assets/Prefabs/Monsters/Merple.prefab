@@ -756,7 +756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   moveSpeed: 4
-  startHealth: 5
+  startHealth: 3
   attackRange: 1
   startBehaviour: 0
   agroRangeObject: {fileID: 5540690113204886165}
@@ -823,7 +823,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 800
   nextWaypointDistance: 1
+  pathRecalcTime: 0.5
   target: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
   animator: {fileID: 5540690112138903559}
 --- !u!1 &5540690113145068304
 GameObject:
