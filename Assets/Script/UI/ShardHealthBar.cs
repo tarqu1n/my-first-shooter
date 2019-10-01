@@ -18,7 +18,7 @@ public class ShardHealthBar : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float hpPercentage = (float)shardController.currentHealth / (float)shardController.startHealth;
         RectTransform barTransform = (transform as RectTransform);

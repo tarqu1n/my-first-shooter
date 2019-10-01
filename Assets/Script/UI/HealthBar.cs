@@ -20,8 +20,7 @@ public class HealthBar : MonoBehaviour
         fullHeight = rectTransform.rect.height;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float hpPercentage = (float)playerController.currentHealth / (float)playerController.currentMaxHealth;
         RectTransform barTransform = (transform as RectTransform);
